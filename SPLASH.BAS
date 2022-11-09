@@ -5,6 +5,17 @@ DECLARE SUB setcolorline (start, linee, offset, colorr%)
 DECLARE SUB PrintDolphin ()
 DECLARE SUB PrintLogo ()
 
+DIM SHARED playarr$(8)
+CONST playarrlen = 8
+playarr$(1) = "t120o0l8g#16g#.g#.g#p4"
+playarr$(2) = "f16f#16gg.g.o1ff#g."
+playarr$(3) = "o0g-48g48o1cc.co0b-16o1c.p4p16"
+playarr$(4) = "o1cc.co0b-16o1cp8c."
+playarr$(5) = "o0g16g#g#.g#.g#p4"
+playarr$(6) = "f16f#16gg.g.o1ff#g.p16"
+playarr$(7) = "cc.co0b-16o1cp4p8"
+playarr$(8) = "cc4cc#4c#4"
+
 SplashScreen
 playjingle
 
@@ -15,14 +26,10 @@ LOAD Form1
 Form1.SHOW
 
 SUB playjingle ()
-    PLAY "t120o0g#16g#8.g#8.g#8p4"
-    PLAY "f16f#16g8g8.g8.o1f8f#8g8."
-    PLAY "o0g-64g64o1c8c8.c8o0b-16o1c8.p4p16"
-    PLAY "o1c8c8.c8o0b-16o1c8p8c8."
-    PLAY "o0g16g#8g#8.g#8.g#8p4"
-    PLAY "f16f#16g8g8.g8.o1f8f#8g8.p16"
-    PLAY "c8c8.c8o0b-16o1c8p4p8"
-    PLAY "c8c4c8c#4c#4"
+    FOR x = 1 TO playarrlen
+        IF INKEY$ <> "" THEN EXIT SUB
+        PLAY "X" + VARPTR$(playarr$(x))
+    NEXT
 END SUB
 
 SUB PrintDolphin ()
